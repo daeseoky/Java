@@ -59,8 +59,9 @@ public class sub4_MethodTypeTest {
 		}
 	}
 	//type4 : 매개변수 x, 리턴값 x
-	public static double type4() {
-		double result
+	public static void type4() {
+		double result = type1(10.01);
+		System.out.println("type4 결과 : "+result);
 	}
 	
 	
