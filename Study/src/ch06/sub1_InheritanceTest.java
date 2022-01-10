@@ -18,10 +18,8 @@ public class sub1_InheritanceTest {
 		kb.buy(10, 65000);
 		kb.show();
 		
-		kb.sell(10, 70000);
+		kb.sell(110, 72000);
 		kb.show();
-		
-		
 		
 		
 	}

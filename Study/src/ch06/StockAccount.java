@@ -8,18 +8,21 @@ public class StockAccount extends Account {
 	private int amount;
 	private int price;
 	
-	public StockAccount(String bamk, String id, String name, int balance, String stock, int amount, int price) {
-		super(bamk, id, name, balance);  // 부모 클래스 호출
+	public StockAccount(String bank, String id, String name, int balance, String stock, int amount, int price) {
+		super(bank, id, name, balance);  // 부모 클래스 호출
 		this.stock = stock;
 		this.amount = amount;
 		this.price = price;
 	}
 	
+		
 	public void sell(int amount, int price) {
+		this.price = price;
 		this.amount -= amount;
 		super.balance += amount * price;
 	}
 	public void buy(int amount, int price) {
+		this.price = price;
 		this.amount += amount;
 		super.balance -= amount * price;
 	}

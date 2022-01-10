@@ -11,10 +11,10 @@ public class Account {
 	
 	//생성자(Constructor) : 객체 생성 할때 멤버변수를 초기화 하는 메서드
 	public Account(String bank, String id, String name, int balance) {
-		this.bank = "국민은행";
-		this.id = "101-12-123456";
-		this.name = "김유신";
-		this.balance = 10000;
+		this.bank = bank;
+		this.id = id;
+		this.name = name;
+		this.balance = balance;
 	}
 	
 	//기능
