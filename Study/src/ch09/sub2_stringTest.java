@@ -2,7 +2,7 @@ package ch09;
 /*
  * 날짜 : 2021/1/10
  * 이름 : 양대석
- * 내용 : 자바 String 내장클래스 실습하기 교재 p284
+ * 내용 : 자바 String 내장클래스 실습하기 교재 p302
  */ 
 public class sub2_stringTest {
 	
