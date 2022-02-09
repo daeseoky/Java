@@ -1,0 +1,18 @@
+package ch05;
+
+public class p194 {
+	public static void main(String[] args) {
+		String str1 = new String("¾È³ç");
+		String str2 = "¾È³ç";
+		String str3 = "¾È³ç";
+		String str4 = new String("¾È³ç");
+		
+		//½ºÆ½ ¸Þ¸ð¸®°ª ºñ±³
+		System.out.println(str1 == str2);
+		System.out.println(str2 == str3);
+		System.out.println(str3 == str4);
+		System.out.println(str4 == str1);
+
+	}
+
+}
