@@ -1,0 +1,134 @@
+-- 학생
+CREATE TABLE `Student` (
+	`sid`   INT          NOT NULL, -- 학생번호
+	`name`  VARCHAR(10)  NULL,     -- 이름
+	`birth` INT(10)      NULL,     -- 생년월일
+	`hp`    INT(13)      NULL,     -- 휴대폰
+	`addr`  VARCHAR(100) NULL,     -- 주소
+	`grade` TINYINT      NULL,     -- 학년
+	`dno`   INT          NULL      -- 학과번호
+);
+
+-- 학생
+ALTER TABLE `Student`
+	ADD CONSTRAINT `PK_Student` -- 학생 기본키
+		PRIMARY KEY (
+			`sid` -- 학생번호
+		);
+
+ALTER TABLE `Student`
+	MODIFY COLUMN `sid` INT NOT NULL AUTO_INCREMENT;
+
+-- 수강
+CREATE TABLE `Register` (
+	`mid`   INT NULL, -- 중간고사
+	`final` INT NULL, -- 기말고사
+	`total` INT NULL, -- 총점
+	`sid`   INT NULL, -- 학생번호
+	`cid`   INT NULL  -- 강좌번호
+);
+
+-- 학과
+CREATE TABLE `Dept` (
+	`dno`   INT         NOT NULL, -- 학과번호
+	`dname` VARCHAR(10) NULL,     -- 학과명
+	`tel`   INT(12)     NULL      -- 전화번호
+);
+
+-- 학과
+ALTER TABLE `Dept`
+	ADD CONSTRAINT `PK_Dept` -- 학과 기본키
+		PRIMARY KEY (
+			`dno` -- 학과번호
+		);
+
+-- 강좌
+CREATE TABLE `Course` (
+	`cid`    INT         NOT NULL, -- 강좌번호
+	`title`  VARCHAR(10) NOT NULL, -- 깅좌명
+	`credit` TINYINT     NULL,     -- 취득학점
+	`time`   TINYINT     NULL,     -- 강의시간
+	`class`  VARCHAR(10) NULL,     -- 강의실
+	`pid`    INT         NULL      -- 교수번호
+);
+
+-- 강좌
+ALTER TABLE `Course`
+	ADD CONSTRAINT `PK_Course` -- 강좌 기본키
+		PRIMARY KEY (
+			`cid` -- 강좌번호
+		);
+
+ALTER TABLE `Course`
+	MODIFY COLUMN `cid` INT NOT NULL AUTO_INCREMENT;
+
+-- 교수
+CREATE TABLE `Professor` (
+	`pid`   INT          NOT NULL, -- 교수번호
+	`name`  VARCHAR(10)  NULL,     -- 이름
+	`birth` INT(8)       NULL,     -- 생년월일
+	`hp`    INT(13)      NULL,     -- 휴대폰
+	`addr`  VARCHAR(100) NULL,     -- 주소
+	`pos`   VARCHAR(10)  NULL,     -- 직위
+	`dno`   INT          NULL      -- 학과번호
+);
+
+-- 교수
+ALTER TABLE `Professor`
+	ADD CONSTRAINT `PK_Professor` -- 교수 기본키
+		PRIMARY KEY (
+			`pid` -- 교수번호
+		);
+
+ALTER TABLE `Professor`
+	MODIFY COLUMN `pid` INT NOT NULL AUTO_INCREMENT;
+
+-- 학생
+ALTER TABLE `Student`
+	ADD CONSTRAINT `FK_Dept_TO_Student` -- 학과 -> 학생
+		FOREIGN KEY (
+			`dno` -- 학과번호
+		)
+		REFERENCES `Dept` ( -- 학과
+			`dno` -- 학과번호
+		);
+
+-- 수강
+ALTER TABLE `Register`
+	ADD CONSTRAINT `FK_Student_TO_Register` -- 학생 -> 수강
+		FOREIGN KEY (
+			`sid` -- 학생번호
+		)
+		REFERENCES `Student` ( -- 학생
+			`sid` -- 학생번호
+		);
+
+-- 수강
+ALTER TABLE `Register`
+	ADD CONSTRAINT `FK_Course_TO_Register` -- 강좌 -> 수강
+		FOREIGN KEY (
+			`cid` -- 강좌번호
+		)
+		REFERENCES `Course` ( -- 강좌
+			`cid` -- 강좌번호
+		);
+
+-- 강좌
+ALTER TABLE `Course`
+	ADD CONSTRAINT `FK_Professor_TO_Course` -- 교수 -> 강좌
+		FOREIGN KEY (
+			`pid` -- 교수번호
+		)
+		REFERENCES `Professor` ( -- 교수
+			`pid` -- 교수번호
+		);
+
+-- 교수
+ALTER TABLE `Professor`
+	ADD CONSTRAINT `FK_Dept_TO_Professor` -- 학과 -> 교수
+		FOREIGN KEY (
+			`dno` -- 학과번호
+		)
+		REFERENCES `Dept` ( -- 학과
+			`dno` -- 학과번호
+		);
