@@ -1,4 +1,4 @@
-package test2;
+package Test2;
 /*
  * 날짜 : 2021/1/06
  * 이름 : 양대석
